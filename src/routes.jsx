@@ -26,7 +26,7 @@ const routes = [
         auth: true,
       },
       {
-        path: '/profile',
+        path: ':username',
         element: <Profile />,
         auth: true,
       },

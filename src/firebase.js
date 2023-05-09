@@ -40,6 +40,16 @@ onAuthStateChanged(auth, async user => {
   }
 });
 
+export const getUserInfo = async uname => {
+  const username = await getDoc(doc(db, 'usernames', uname));
+  if (username.exists()) {
+    return (await getDoc(doc(db, 'users', username.data().user_id))).data();
+  } else {
+    toast.error('Kullanıcı bulunamadı!');
+    throw new Error('Kullanıcı bulunamadı!');
+  }
+};
+
 export const login = async (email, password) => {
   try {
     return await signInWithEmailAndPassword(auth, email, password);
@@ -65,11 +75,13 @@ export const register = async ({ email, password, full_name, username }) => {
           followers: [],
           following: [],
           notifications: [],
+          website: '',
+          bio: '',
         });
         await updateProfile(auth.currentUser, {
           displayName: full_name,
         });
-        toast(`Aramıza hoşgeldin, ${username}`);
+        toast(`Hesap başarılı bir şekilde oluşturuldu, aramıza hoşgeldin ${full_name}`);
         return response.user;
       }
     }

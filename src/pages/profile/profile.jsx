@@ -1,5 +1,29 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { getUserInfo } from '~/firebase.js';
+import Banner from './components/banner';
+
 const Profile = () => {
-  return <div className="h-full w-full overflow-auto"></div>;
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(false);
+  const navigate = useNavigate();
+  const { username } = useParams();
+
+  useEffect(() => {
+    getUserInfo(username)
+      .then(user => {
+        setUser(user);
+      })
+      .catch(err => {
+        setUser(false);
+      });
+  }, []);
+
+  return (
+    <div className="">
+      <Banner user={user} />
+    </div>
+  );
 };
 
 export default Profile;

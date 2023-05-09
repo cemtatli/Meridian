@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import { EyeAlt, EyeClose, LeftRoundArrow } from 'iconoir-react';
+import { EyeAlt, EyeClose, LogIn } from 'iconoir-react';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '~/components/button';
@@ -16,7 +16,7 @@ const Register = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = async (values, actions) => {
+  const handleSubmit = async values => {
     const response = await register(values);
     if (response) {
       navigate(location.state?.return_url || '/', {
@@ -42,7 +42,7 @@ const Register = () => {
           }}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting, isValid, dirty, values }) => (
+          {({ isSubmitting, isValid, dirty }) => (
             <Form className="flex flex-col gap-y-4">
               <Input placeholder="Full Name" name="full_name" />
               <Input placeholder="Username" name="username" />
@@ -75,8 +75,8 @@ const Register = () => {
           to={'/auth/login'}
           className="flex items-center justify-center gap-1 text-center text-sm font-medium text-primary-dark hover:text-ocean-500 hover:underline md:absolute md:left-10 md:top-10"
         >
-          <LeftRoundArrow />
-          Log in
+          <LogIn />
+          Already have an account? Log In
         </Link>
       </nav>
     </section>

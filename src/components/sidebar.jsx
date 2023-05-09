@@ -1,5 +1,4 @@
 import { Link, NavLink } from 'react-router-dom';
-import Avatar from './avatar';
 import {
   BellNotification,
   Compass,
@@ -8,47 +7,79 @@ import {
   Settings,
   Home,
   MessageText,
+  LogOut,
 } from 'iconoir-react';
-import ThemeChanger from './theme-changer';
-import { logout } from '~/firebase';
+import Avatar from './avatar';
+import { useSelector } from 'react-redux';
+import { logout } from '~/firebase.js';
 
 const Sidebar = () => {
-  return (
-    <div className="mt-auto flex h-screen flex-col items-center justify-center border-r border-ocean-950 border-opacity-10 px-2 dark:border-white dark:border-opacity-10 md:border-none md:px-0">
-      <aside className="mt-auto flex h-screen-64 shrink-0 flex-col items-start justify-start gap-y-1 pb-4 md:w-60 md:pr-0">
-        <NavLink className="navlink-item" title="Home" to={'/'}>
-          <Home /> <span className="mr-10 hidden md:block">Home</span>
-        </NavLink>
-        <NavLink className="navlink-item" title="Profile" to={'/profile'}>
-          <User /> <span className="mr-10 hidden md:block">Profile</span>
-        </NavLink>
-        <NavLink className="navlink-item" title="Notifications" to={'/notifications'}>
-          <BellNotification />
-          <span className="mr-10 hidden md:block">Notifications</span>
-        </NavLink>
-        <NavLink className="navlink-item" title="Messages" to={'/messages'}>
-          <MessageText />
-          <span className="mr-10 hidden md:block">Messages</span>
-        </NavLink>
-        <NavLink className="navlink-item" title="Explore" to={'/explore'}>
-          <Compass /> <span className="mr-10 hidden md:block">Explore</span>
-        </NavLink>
-        <NavLink className="navlink-item" title="Bookmarks" to={'/bookmarks'}>
-          <BookmarkEmpty />
-          <span className="mr-10 hidden md:block">Bookmarks</span>
-        </NavLink>
-        <NavLink className="navlink-item" title="Settings" to={'/settings'}>
-          <Settings />
-          <span className="mr-10 hidden md:block">Settings</span>
-        </NavLink>
+  const user = useSelector(state => state.auth.user);
+  const sidebarLinks = [
+    {
+      label: 'Home',
+      icon: Home,
+      path: '/',
+    },
+    {
+      label: 'Profile',
+      icon: User,
+      path: `/${user.username}`,
+    },
+    {
+      label: 'Notifications',
+      icon: BellNotification,
+      path: '/notifications',
+    },
+    {
+      label: 'Messages',
+      icon: MessageText,
+      path: '/messages',
+    },
+    {
+      label: 'Explore',
+      icon: Compass,
+      path: '/explore',
+    },
+    {
+      label: 'Bookmarks',
+      icon: BookmarkEmpty,
+      path: '/bookmarks',
+    },
+    {
+      label: 'Settings',
+      icon: Settings,
+      path: '/settings',
+    },
+  ];
 
-        <div className="mt-auto flex w-full items-center justify-center md:justify-start">
-          <Link to={'/profile'}>
-            <Avatar title="Profile" ring={false} size="h-10 w-10 md:w-12 md:h-12" />
-          </Link>
-        </div>
-      </aside>
-    </div>
+  return (
+    <aside className="flex h-screen shrink-0 flex-col items-start justify-start gap-y-1 border-r border-ocean-950 border-opacity-10 px-2 pb-5 dark:border-white dark:border-opacity-10 md:w-50 md:border-none md:px-0 md:pr-0">
+      {sidebarLinks.map(link => (
+        <NavLink
+          className="navlink-item flex h-10 items-center gap-x-2 px-2 font-medium hover:rounded-full hover:bg-ocean-100 hover:text-primary-ocean hover:duration-300 hover:dark:bg-primary-light/10 md:px-4"
+          aria-label={link.label}
+          title={link.label}
+          to={link.path}
+          key={link.label}
+        >
+          <link.icon />
+          <span className="mr-8 hidden md:block">{link.label}</span>
+        </NavLink>
+      ))}
+      <button
+        title="Logout"
+        onClick={logout}
+        className=" mt-auto flex h-10 items-center gap-x-2 px-2 font-medium hover:rounded-full hover:bg-ocean-100 hover:text-primary-ocean hover:duration-300 hover:dark:bg-primary-light/10 md:px-4"
+      >
+        <LogOut />
+        Log out
+      </button>
+
+      <Link to={`/${user.username}`}>
+        <Avatar title="Profile" ring={false} size="h-10 w-10 md:w-12 md:h-12" />
+      </Link>
+    </aside>
   );
 };
 
