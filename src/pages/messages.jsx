@@ -1,5 +1,5 @@
 const Messages = () => {
-  return <div className="w-full">Messages</div>;
+  return <div className="w-full"></div>;
 };
 
 export default Messages;

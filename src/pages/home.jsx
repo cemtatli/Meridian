@@ -1,27 +1,5 @@
 const Home = () => {
-  return (
-    <div className="w-full overflow-auto">
-      {' '}
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-      <div className="">Lorem ipsum dolor sit amet.</div>
-    </div>
-  );
+  return <div className="h-screen-64 w-full overflow-auto"></div>;
 };
 
 export default Home;

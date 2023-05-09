@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { ThemeContext } from '~/context/ThemeContext';
+import { ThemeContext } from '~/context/theme-context';
 import { HalfMoon, SunLight } from 'iconoir-react';
 
 const ThemeChanger = () => {
@@ -12,7 +12,10 @@ const ThemeChanger = () => {
   };
 
   return (
-    <button onClick={handleClick} className={`${clicked ? 'animate-bounce-down' : 'animate-bounce-up'}`}>
+    <button
+      onClick={handleClick}
+      className={`${clicked ? 'animate-bounce-down' : 'animate-bounce-up'}`}
+    >
       {theme === 'dark' ? (
         <span className="flex items-center gap-x-1 text-xs capitalize">
           <SunLight height={20} width={20} />

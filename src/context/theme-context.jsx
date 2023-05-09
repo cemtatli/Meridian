@@ -33,5 +33,9 @@ export const ThemeProvider = ({ initialTheme, children }) => {
   useEffect(() => {
     rawSetTheme(theme);
   }, [theme]);
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };

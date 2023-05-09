@@ -1,10 +1,11 @@
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/private-route';
 
 import MainLayout from './layout/main-layout';
+import AuthLayout from './layout/auth-layout';
 
 import Home from './pages/home';
-import LogIn from './pages/login';
-import Register from './pages/register';
+import LogIn from './pages/auth/login/login';
+import Register from './pages/auth/register/register';
 import Profile from './pages/profile/profile';
 import Settings from './pages/settings';
 import Notifications from './pages/notifications';
@@ -12,7 +13,6 @@ import Bookmarks from './pages/bookmarks';
 import Explore from './pages/explore';
 import NotFound from './pages/not-found';
 import Messages from './pages/messages';
-import AuthLayout from './layout/auth-layout';
 
 const routes = [
   {
@@ -83,7 +83,7 @@ const AuthenticationChecking = routes =>
       route.element = <PrivateRoute>{route.element}</PrivateRoute>; // Eğer bir auth işlemi var ise bunu PrivateRoute ile sarmala.
     }
     if (route?.children) {
-      route.children = AuthenticationChecking(route.children); // Eğer children var ise de aynı işlemi yap.
+      route.children = AuthenticationChecking(route.children); // Eğer childreni var ise de aynı işlemi yap.
     }
     return route; // Yok ise normal bir şekilde render et.
   });

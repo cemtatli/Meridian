@@ -1,5 +1,5 @@
 const Notifications = () => {
-  return <div className="w-full">Notifications</div>;
+  return <div className="w-full"></div>;
 };
 
 export default Notifications;

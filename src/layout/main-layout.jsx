@@ -6,14 +6,12 @@ import Header from '~/components/header';
 const MainLayout = () => {
   return (
     <main>
+      <Header />
       <section className="flex w-full items-start justify-center">
-        <div className="flex w-full flex-col">
-          <Header />
-          <div className="h-screen-64 overflow-auto p-4 pb-0">
-            <Outlet />
-          </div>
-        </div>
         <Sidebar />
+        <div className="flex h-screen w-full flex-col overflow-auto p-4 pb-0">
+          <Outlet />
+        </div>
       </section>
     </main>
   );
