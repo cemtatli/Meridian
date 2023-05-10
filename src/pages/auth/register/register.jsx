@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
-import { EyeAlt, EyeClose, LogIn } from 'iconoir-react';
-import { useState } from 'react';
+import { LogIn } from 'iconoir-react';
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '~/components/button';
 import Input from '~/components/input';
@@ -10,11 +10,6 @@ import { RegisterSchema } from '~/validation';
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   const handleSubmit = async values => {
     const response = await register(values);
@@ -26,7 +21,7 @@ const Register = () => {
   };
 
   return (
-    <section className="flex h-screen flex-col items-center justify-center bg-primary-light md:relative">
+    <section className="flex h-screen flex-col items-center justify-center bg-white md:relative">
       <nav className="flex w-4/5 flex-col gap-4 md:w-3/5 ">
         <span className="text-center text-2xl font-bold tracking-tight text-thunder-800  md:text-start">
           Let&apos;s get you set up on
@@ -46,25 +41,8 @@ const Register = () => {
             <Form className="flex flex-col gap-y-4">
               <Input placeholder="Full Name" name="full_name" />
               <Input placeholder="Username" name="username" />
-              <Input name="email" placeholder="Email or phone number" />
-
-              <div className="relative">
-                <Input
-                  name="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Password"
-                />
-                <span
-                  className="absolute inset-y-0 right-1 flex cursor-pointer items-center px-2 text-primary-dark"
-                  onClick={handleShowPassword}
-                >
-                  {showPassword ? (
-                    <EyeAlt width={16} height={16} />
-                  ) : (
-                    <EyeClose width={16} height={16} />
-                  )}
-                </span>
-              </div>
+              <Input placeholder="Email" name="email" type="email" />
+              <Input placeholder="Password" name="password" type="password" />
               <Button disabled={!isValid || !dirty || isSubmitting} textSize="text-base">
                 Sign in
               </Button>

@@ -1,4 +1,4 @@
-import { Community, MultiBubble, Search, ShareAndroid, UserLove } from 'iconoir-react';
+import { Community, MultiBubble, Search, UserLove, Flare } from 'iconoir-react';
 import { Link } from 'react-router-dom';
 import Button from '~/components/button';
 
@@ -16,7 +16,7 @@ const Presentation = [
     desc: 'Connect with Like-Minded People',
   },
   {
-    icon: ShareAndroid,
+    icon: Flare,
     desc: 'Share Your Thoughts and Opinions',
   },
   {

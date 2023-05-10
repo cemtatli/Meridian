@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import {
   BellNotification,
@@ -7,11 +8,10 @@ import {
   Settings,
   Home,
   MessageText,
-  LogOut,
 } from 'iconoir-react';
 import Avatar from './avatar';
 import { useSelector } from 'react-redux';
-import { logout } from '~/firebase.js';
+import Logout from './logout';
 
 const Sidebar = () => {
   const user = useSelector(state => state.auth.user);
@@ -24,7 +24,7 @@ const Sidebar = () => {
     {
       label: 'Profile',
       icon: User,
-      path: `/${user.username}`,
+      path: `/${user?.username}`,
     },
     {
       label: 'Notifications',
@@ -53,8 +53,15 @@ const Sidebar = () => {
     },
   ];
 
+  useEffect(() => {
+    if (!user) {
+      // Kullanıcı bilgisi henüz yüklenmediyse, yeniden yükleme yapın
+      window.location.reload();
+    }
+  }, [user]);
+
   return (
-    <aside className="flex h-screen shrink-0 flex-col items-start justify-start gap-y-1 border-r border-ocean-950 border-opacity-10 px-2 pb-5 dark:border-white dark:border-opacity-10 md:w-50 md:border-none md:px-0 md:pr-0">
+    <aside className="flex h-full shrink-0 flex-col items-start justify-start gap-y-1 border-r border-ocean-950 border-opacity-10 px-2 pb-5 dark:border-white dark:border-opacity-10 md:w-50 md:border-none md:px-0 md:pr-0">
       {sidebarLinks.map(link => (
         <NavLink
           className="navlink-item flex h-10 items-center gap-x-2 px-2 font-medium hover:rounded-full hover:bg-ocean-100 hover:text-primary-ocean hover:duration-300 hover:dark:bg-primary-light/10 md:px-4"
@@ -67,16 +74,8 @@ const Sidebar = () => {
           <span className="mr-8 hidden md:block">{link.label}</span>
         </NavLink>
       ))}
-      <button
-        title="Logout"
-        onClick={logout}
-        className=" mt-auto flex h-10 items-center gap-x-2 px-2 font-medium hover:rounded-full hover:bg-ocean-100 hover:text-primary-ocean hover:duration-300 hover:dark:bg-primary-light/10 md:px-4"
-      >
-        <LogOut />
-        Log out
-      </button>
-
-      <Link to={`/${user.username}`}>
+      <Logout />
+      <Link to={`/${user?.username}`}>
         <Avatar title="Profile" ring={false} size="h-10 w-10 md:w-12 md:h-12" />
       </Link>
     </aside>

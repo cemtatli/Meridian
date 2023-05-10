@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { EyeClose, EyeAlt } from 'iconoir-react';
 import Button from '~/components/button.jsx';
 import Input from '~/components/input.jsx';
 import { login } from '~/firebase.js';
@@ -12,14 +10,9 @@ import LoginPresentation from './components/login-presentation';
 const LogIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleSubmit = async (values, actions) => {
-    await login(values.username, values.password);
+  const handleSubmit = async values => {
+    await login(values.email, values.password);
     navigate(location.state?.return_url || '/', {
       replace: true,
     });
@@ -28,7 +21,7 @@ const LogIn = () => {
   return (
     <div className="flex h-screen w-full ">
       <LoginPresentation />
-      <section className="flex flex-1 flex-col items-center justify-center bg-primary-light">
+      <section className="flex flex-1 flex-col items-center justify-center bg-white">
         <nav className="flex w-4/5 flex-col gap-4 md:mt-[210px] lg:w-3/5">
           <div className="text-pale-800 flex items-center justify-center gap-x-2 text-center text-2xl font-bold tracking-tight text-primary-dark md:text-start">
             <Logo size="w-8 h-8 shrink-0" />
@@ -37,27 +30,15 @@ const LogIn = () => {
           <Formik
             validationSchema={LoginSchema}
             initialValues={{
-              username: '',
+              email: '',
               password: '',
             }}
             onSubmit={handleSubmit}
           >
-            {({ isSubmitting, isValid, dirty, values }) => (
+            {({ isSubmitting, isValid, dirty }) => (
               <Form className="flex flex-col gap-y-4">
-                <Input name="username" placeholder="Phone, email or username" />
-                <div className="relative">
-                  <Input
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Password"
-                  />
-                  <span
-                    className="absolute inset-y-0 right-1 flex cursor-pointer items-center px-2 text-primary-dark"
-                    onClick={handleShowPassword}
-                  >
-                    {showPassword ? <EyeAlt width={16} /> : <EyeClose width={16} />}
-                  </span>
-                </div>
+                <Input type="email" name="email" placeholder="Email or username" />
+                <Input name="password" placeholder="Password" type="password" />
                 <Button disabled={!isValid || !dirty || isSubmitting} textSize="text-base">
                   Log in
                 </Button>

@@ -12,7 +12,7 @@ body {
 html,
 body,
 #root {
-  @apply h-screen text-primary-dark dark:bg-primary-dark dark:text-primary-light;
+  @apply h-full text-primary-dark dark:bg-primary-dark dark:text-primary-light;
 }
 .navlink-item.active {
   @apply rounded-full bg-ocean-100 font-semibold tracking-[0.01em] text-primary-ocean transition-all dark:bg-primary-light/10 md:bg-transparent md:dark:bg-transparent;

@@ -45,7 +45,6 @@ export const getUserInfo = async uname => {
   if (username.exists()) {
     return (await getDoc(doc(db, 'users', username.data().user_id))).data();
   } else {
-    toast.error('Kullanıcı bulunamadı!');
     throw new Error('Kullanıcı bulunamadı!');
   }
 };
@@ -69,19 +68,23 @@ export const register = async ({ email, password, full_name, username }) => {
         await setDoc(doc(db, 'usernames', username), {
           user_id: response.user.uid,
         });
+
         await setDoc(doc(db, 'users', response.user.uid), {
           fullName: full_name,
           username: username,
           followers: [],
           following: [],
+          bookmarks: [],
           notifications: [],
+          email: email,
           website: '',
           bio: '',
+          posts: 0,
         });
         await updateProfile(auth.currentUser, {
           displayName: full_name,
         });
-        toast(`Hesap başarılı bir şekilde oluşturuldu, aramıza hoşgeldin ${full_name}`);
+
         return response.user;
       }
     }

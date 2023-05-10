@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getUserInfo } from '~/firebase.js';
 import Banner from './components/banner';
+import UserProfile from './components/user-profile';
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ const Profile = () => {
       .catch(err => {
         setUser(false);
       });
-  }, []);
+  }, [username]);
 
   return (
     <div className="">
