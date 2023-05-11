@@ -10,6 +10,7 @@ import {
 import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 import { toast } from 'sonner';
 import { userHandle } from './utils';
+import { Navigate } from 'react-router-dom';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
@@ -42,9 +43,11 @@ onAuthStateChanged(auth, async user => {
 
 export const getUserInfo = async uname => {
   const username = await getDoc(doc(db, 'usernames', uname));
+
   if (username.exists()) {
     return (await getDoc(doc(db, 'users', username.data().user_id))).data();
   } else {
+    /*  toast.error('Kullanıcı bulunamadı!'); */
     throw new Error('Kullanıcı bulunamadı!');
   }
 };
@@ -58,6 +61,16 @@ export const login = async (email, password) => {
 };
 
 export const register = async ({ email, password, full_name, username }) => {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Get the month and year of the current date
+  const month = currentDate.toLocaleString('en-US', { month: 'long' }); // returns the full name of the current month (e.g. "May")
+  const year = currentDate.getFullYear(); // returns the current year (e.g. 2023)
+
+  // Format the join date string as "Month Year"
+  const joinDate = `${month} ${year}`;
+
   try {
     const user = await getDoc(doc(db, 'usernames', username));
     if (user.exists()) {
@@ -68,7 +81,6 @@ export const register = async ({ email, password, full_name, username }) => {
         await setDoc(doc(db, 'usernames', username), {
           user_id: response.user.uid,
         });
-
         await setDoc(doc(db, 'users', response.user.uid), {
           fullName: full_name,
           username: username,
@@ -79,12 +91,12 @@ export const register = async ({ email, password, full_name, username }) => {
           email: email,
           website: '',
           bio: '',
-          posts: 0,
+          tweets: '',
+          joinDate,
         });
         await updateProfile(auth.currentUser, {
           displayName: full_name,
         });
-
         return response.user;
       }
     }

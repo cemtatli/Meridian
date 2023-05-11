@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 import { getUserInfo } from '~/firebase.js';
-import Banner from './components/banner';
-import UserProfile from './components/user-profile';
+
+import ProfileNotFound from './components/profile-not-found';
+import { Helmet } from 'react-helmet';
+import ProfileHeader from './components/profile-header';
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
@@ -20,10 +22,26 @@ const Profile = () => {
       });
   }, [username]);
 
+  if (user === false) {
+    return <ProfileNotFound />;
+  }
+
+  if (user === null) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="">
-      <Banner user={user} />
-    </div>
+    user && (
+      <div>
+        <Helmet>
+          <title>
+            {user.fullName} (@{user.username}) • Meridian
+          </title>
+        </Helmet>
+        {<ProfileHeader user={user} />}
+        <Outlet />
+      </div>
+    )
   );
 };
 

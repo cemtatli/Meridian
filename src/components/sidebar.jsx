@@ -1,14 +1,6 @@
 import { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import {
-  BellNotification,
-  Compass,
-  BookmarkEmpty,
-  User,
-  Settings,
-  Home,
-  MessageText,
-} from 'iconoir-react';
+import { BellNotification, BookmarkEmpty, User, Settings, Home, MessageText } from 'iconoir-react';
 import Avatar from './avatar';
 import { useSelector } from 'react-redux';
 import Logout from './logout';
@@ -35,11 +27,6 @@ const Sidebar = () => {
       label: 'Messages',
       icon: MessageText,
       path: '/messages',
-    },
-    {
-      label: 'Explore',
-      icon: Compass,
-      path: '/explore',
     },
     {
       label: 'Bookmarks',

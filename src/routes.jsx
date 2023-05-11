@@ -3,16 +3,16 @@ import PrivateRoute from './components/private-route';
 import MainLayout from './layout/main-layout';
 import AuthLayout from './layout/auth-layout';
 
-import Home from './pages/home';
+import Home from './pages/home/home';
 import LogIn from './pages/auth/login/login';
 import Register from './pages/auth/register/register';
 import Profile from './pages/profile/profile';
 import Settings from './pages/settings';
 import Notifications from './pages/notifications';
 import Bookmarks from './pages/bookmarks';
-import Explore from './pages/explore';
 import NotFound from './pages/not-found';
 import Messages from './pages/messages';
+import Following from './pages/home/components/following';
 
 const routes = [
   {
@@ -21,9 +21,15 @@ const routes = [
     auth: true,
     children: [
       {
-        index: true,
+        index: '/',
         element: <Home />,
         auth: true,
+        children: [
+          {
+            path: 'follows',
+            element: <Following />,
+          },
+        ],
       },
       {
         path: ':username',
@@ -48,11 +54,6 @@ const routes = [
       {
         path: '/messages',
         element: <Messages />,
-        auth: true,
-      },
-      {
-        path: '/explore',
-        element: <Explore />,
         auth: true,
       },
     ],

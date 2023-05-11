@@ -7,7 +7,7 @@ const Avatar = ({ children, size, ring, ...props }) => {
     <div className={`${size}`}>
       <img
         {...props}
-        className={`h-full w-full shrink-0 cursor-pointer rounded-full object-contain shadow-lg transition hover:scale-105 ${ringStyle}`}
+        className={`h-full w-full shrink-0 cursor-pointer rounded-full object-contain transition hover:scale-105 ${ringStyle}`}
         src="./default-avatar.png"
       />
       {children}
@@ -22,8 +22,8 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  size: 'w-20 h-20 sm:h-32 sm:w-32 ',
-  ring: true,
+  size: 'w-20 h-20 md:w-28 md:h-28 ',
+  ring: false,
 };
 
 export default Avatar;

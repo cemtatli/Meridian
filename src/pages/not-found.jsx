@@ -6,7 +6,7 @@ const NotFound = () => {
       <h1 className="text-center text-3xl font-bold text-thunder-800 dark:text-white">
         Oops! Page not found
       </h1>
-      <p className="-mt-2.5  text-center font-medium text-thunder-500 dark:text-thunder-400">
+      <p className="-mt-2.5 text-center font-medium text-thunder-500 dark:text-thunder-400">
         The page you are looking for doesn&apos;t exist.
       </p>
       <Link to="/" className="font-semibold text-primary-ocean">
