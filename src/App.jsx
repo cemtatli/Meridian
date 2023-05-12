@@ -13,7 +13,7 @@ const App = () => {
   }
   return (
     <>
-      <Toaster richColors position="top-center" />
+      <Toaster position="top-center" />
       {Routes}
     </>
   );

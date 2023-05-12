@@ -7,7 +7,7 @@ export default {
       colors: {
         primary: {
           light: '#f5fafc',
-          dark: '#191b21',
+          dark: '#000',
           ocean: '#0066ec',
           thunder: '#f3f3f8',
         },
@@ -60,6 +60,7 @@ export default {
       },
       height: {
         'screen-64': 'calc(100vh - 4rem)',
+        'screen-128': 'calc(100vh - 8rem)',
       },
     },
   },

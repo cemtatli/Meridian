@@ -28,7 +28,7 @@ const Presentation = [
 const LoginPresentation = () => {
   return (
     <section className="hidden w-1/2 flex-col items-center justify-center bg-gradient-to-bl from-ocean-500 via-ocean-400 to-ocean-700 text-white md:flex lg:w-3/5">
-      <h3 className="mb-5 text-2xl font-bold tracking-tight">What is happening in the world?</h3>
+      <h3 className="mb-5 text-2xl font-bold tracking-tight">What is happening in the world?</h3>{' '}
       <nav className="flex w-4/5 flex-col gap-y-4">
         {Presentation.map((item, index) => (
           <div

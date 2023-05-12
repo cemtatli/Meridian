@@ -4,6 +4,7 @@ import { LogIn } from 'iconoir-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '~/components/button';
 import Input from '~/components/input';
+import Logo from '~/components/logo';
 import { register } from '~/firebase';
 import { RegisterSchema } from '~/validation';
 
@@ -23,10 +24,11 @@ const Register = () => {
   return (
     <section className="flex h-screen flex-col items-center justify-center bg-white md:relative">
       <nav className="flex w-4/5 flex-col gap-4 md:w-3/5 ">
-        <span className="text-center text-2xl font-bold tracking-tight text-thunder-800  md:text-start">
+        <div className="text-center text-2xl font-bold tracking-tight text-thunder-800 md:text-start">
           Let&apos;s get you set up on
-          <span className="text-ocean-600">&nbsp;meridian.social</span>
-        </span>
+          <span className="text-ocean-600">&nbsp;meridian.social</span>{' '}
+        </div>
+
         <Formik
           validationSchema={RegisterSchema}
           initialValues={{

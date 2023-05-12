@@ -24,7 +24,7 @@ const LogIn = () => {
       <section className="flex flex-1 flex-col items-center justify-center bg-white">
         <nav className="flex w-4/5 flex-col gap-4 md:mt-[210px] lg:w-3/5">
           <div className="text-pale-800 flex items-center justify-center gap-x-2 text-center text-2xl font-bold tracking-tight text-primary-dark md:text-start">
-            <Logo size="w-8 h-8 shrink-0" />
+            <Logo size="w-6 h-6 shrink-0" />
             <span className="whitespace-nowrap">Welcome to Meridian</span>
           </div>
           <Formik

@@ -10,8 +10,10 @@ const ProfileHeader = ({ user }) => {
         <div className="mb-4 flex w-full items-center gap-4">
           <Avatar src={user?.avatar} />
           <div className="flex flex-col">
-            <h1 className="text-2xl font-semibold">{user?.fullName}</h1>
-            <p className="text-gray-600 dark:text-primary-light">@{user?.username}</p>
+            <h1 className="text-base font-semibold md:text-2xl">{user?.fullName}</h1>
+            <p className="text-sm text-gray-600 dark:text-primary-light md:text-base">
+              @{user?.username}
+            </p>
           </div>
         </div>
 
@@ -21,12 +23,12 @@ const ProfileHeader = ({ user }) => {
             followers
           </div>
           <div className="mr-2 text-sm md:mr-8">
-            <span className="font-semibold dark:text-primary-light">{user?.tweets?.length}</span>{' '}
-            tweets
-          </div>
-          <div className="mr-2 text-sm md:mr-8">
             <span className="font-semibold dark:text-primary-light">{user?.following?.length}</span>{' '}
             following
+          </div>
+          <div className="mr-2 text-sm md:mr-8">
+            <span className="font-semibold dark:text-primary-light">{user?.tweets?.length}</span>{' '}
+            tweets
           </div>
         </nav>
         <div className="mt-4 text-sm text-gray-600 dark:text-primary-light">

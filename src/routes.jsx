@@ -13,6 +13,7 @@ import Bookmarks from './pages/bookmarks';
 import NotFound from './pages/not-found';
 import Messages from './pages/messages';
 import Following from './pages/home/components/following';
+import ForYou from './pages/home/components/for-you';
 
 const routes = [
   {
@@ -28,6 +29,11 @@ const routes = [
           {
             path: 'follows',
             element: <Following />,
+            auth: true,
+          },
+          {
+            element: <ForYou />,
+            auth: true,
           },
         ],
       },

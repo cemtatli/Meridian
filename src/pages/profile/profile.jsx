@@ -5,6 +5,7 @@ import { getUserInfo } from '~/firebase.js';
 import ProfileNotFound from './components/profile-not-found';
 import { Helmet } from 'react-helmet';
 import ProfileHeader from './components/profile-header';
+import Loader from '~/components/loader';
 
 const Profile = () => {
   const [loading, setLoading] = useState(true);
@@ -13,21 +14,24 @@ const Profile = () => {
   const { username } = useParams();
 
   useEffect(() => {
+    setLoading(true);
     getUserInfo(username)
       .then(user => {
         setUser(user);
+        setLoading(false);
       })
       .catch(err => {
         setUser(false);
+        setLoading(false);
       });
   }, [username]);
 
-  if (user === false) {
-    return <ProfileNotFound />;
+  if (loading) {
+    return <Loader />;
   }
 
-  if (user === null) {
-    return <div>Loading...</div>;
+  if (user === false) {
+    return <ProfileNotFound />;
   }
 
   return (
