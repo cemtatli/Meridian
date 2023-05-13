@@ -1,10 +1,14 @@
 import classNames from 'classnames';
+import { Helmet } from 'react-helmet';
 import { NavLink, Outlet } from 'react-router-dom';
 
-const Home = () => {
+const HomeLayout = () => {
   return (
     <div>
-      <nav className="flex w-full items-center justify-center gap-x-16 border-b  border-ocean-950 border-opacity-10 bg-transparent px-4 backdrop-blur-lg dark:border-white dark:border-opacity-10 md:border-t md:border-none ">
+      <Helmet>
+        <title>Meridian • Home</title>
+      </Helmet>
+      <nav className="flex w-full items-center justify-center gap-x-16 border-b border-ocean-950 border-opacity-10 bg-transparent px-4 backdrop-blur-lg dark:border-white dark:border-opacity-10 md:border-b-[0px] md:border-t md:border-transparent ">
         <NavLink
           to={'/'}
           end={true}
@@ -39,4 +43,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomeLayout;

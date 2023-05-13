@@ -14,26 +14,7 @@ body,
 #root {
   @apply h-full text-primary-dark dark:bg-primary-dark dark:text-primary-light;
 }
-.navlink-item.active {
-  @apply rounded-full bg-ocean-100 font-semibold tracking-[0.01em] text-primary-ocean transition-all dark:bg-primary-light/10 md:bg-transparent md:dark:bg-transparent;
-}
-
-/* @keyframes bounce-down {
-  0% {
-    transform: translateY(-10px);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-bounce-down {
-  animation: bounce-down 0.5s;
-} */
 
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 1px;
 }

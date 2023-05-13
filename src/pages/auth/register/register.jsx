@@ -4,7 +4,6 @@ import { LogIn } from 'iconoir-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '~/components/button';
 import Input from '~/components/input';
-import Logo from '~/components/logo';
 import { register } from '~/firebase';
 import { RegisterSchema } from '~/validation';
 

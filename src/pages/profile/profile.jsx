@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { getUserInfo } from '~/firebase.js';
-
 import ProfileNotFound from './components/profile-not-found';
 import { Helmet } from 'react-helmet';
 import ProfileHeader from './components/profile-header';
 import Loader from '~/components/loader';
 
+import { toast } from 'sonner';
+
 const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(false);
-  const navigate = useNavigate();
   const { username } = useParams();
 
   useEffect(() => {
@@ -23,6 +23,7 @@ const Profile = () => {
       .catch(err => {
         setUser(false);
         setLoading(false);
+        toast.error(err.code);
       });
   }, [username]);
 
@@ -36,14 +37,16 @@ const Profile = () => {
 
   return (
     user && (
-      <div>
+      <div className="">
         <Helmet>
           <title>
             {user.fullName} (@{user.username}) • Meridian
           </title>
         </Helmet>
         {<ProfileHeader user={user} />}
-        <Outlet />
+        <div>
+          <Outlet />
+        </div>
       </div>
     )
   );

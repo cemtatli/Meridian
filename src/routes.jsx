@@ -14,6 +14,7 @@ import NotFound from './pages/not-found';
 import Messages from './pages/messages';
 import Following from './pages/home/components/following';
 import ForYou from './pages/home/components/for-you';
+import HomeLayout from './pages/home/home';
 
 const routes = [
   {
@@ -23,7 +24,7 @@ const routes = [
     children: [
       {
         index: '/',
-        element: <Home />,
+        element: <HomeLayout />,
         auth: true,
         children: [
           {
@@ -32,6 +33,7 @@ const routes = [
             auth: true,
           },
           {
+            index: '/',
             element: <ForYou />,
             auth: true,
           },
