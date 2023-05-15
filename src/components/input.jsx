@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
-import { EyeAlt, EyeClose } from 'iconoir-react';
+import { EyeAlt, EyeOff } from 'iconoir-react';
 import { useState } from 'react';
+import classNames from 'classnames';
 
-const Input = ({ children, bgColor, textSize, size, type, placeholder, ...props }) => {
+const Input = ({ children, bgColor, textSize, size, type, label, ...props }) => {
   const [field] = useField(props);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -14,14 +15,27 @@ const Input = ({ children, bgColor, textSize, size, type, placeholder, ...props 
   const isPasswordType = type === 'password';
 
   return (
-    <div className="relative">
+    <label className="relative block rounded-xl">
+      <small
+        className={classNames({
+          'pointer-events-none absolute left-4 -translate-y-1/2 cursor-text font-medium text-primary-text-2 transition-all': true,
+          'top-1/2 text-xs': !field.value,
+          'top-3 text-xxs font-medium': field.value,
+        })}
+      >
+        {label}
+      </small>
       <input
         type={isPasswordType ? (showPassword ? 'text' : 'password') : type}
         {...field}
         {...props}
-        placeholder={`${placeholder}`}
-        className={`rounded-xl border-2 border-gray-300 bg-transparent px-4 py-2 text-primary-dark placeholder:text-sm focus:border-ocean-800 focus:outline-none 
-        ${isPasswordType ? 'pr-8' : ''}  ${bgColor} ${textSize} ${size} `}
+        className={
+          (` ${isPasswordType ? 'pr-8' : ''}  ${bgColor} ${textSize} ${size}`,
+          classNames({
+            'h-[52px] w-full rounded-xl border-2 border-gray-300 bg-transparent px-4 py-2 text-primary-dark placeholder:text-sm focus:border-ocean-400 focus:placeholder-transparent focus:outline-none': true,
+            'pt-4': field.value,
+          }))
+        }
       >
         {children}
       </input>
@@ -30,10 +44,10 @@ const Input = ({ children, bgColor, textSize, size, type, placeholder, ...props 
           className="absolute inset-y-0 right-0.5 flex cursor-pointer items-center px-2 text-primary-dark"
           onClick={toggleShowPassword}
         >
-          {showPassword ? <EyeAlt width={16} /> : <EyeClose width={16} />}
+          {showPassword ? <EyeAlt width={16} height={16} /> : <EyeOff width={16} height={16} />}
         </span>
       )}
-    </div>
+    </label>
   );
 };
 
@@ -44,14 +58,15 @@ Input.propTypes = {
   size: PropTypes.string,
   type: PropTypes.string,
   placeholder: PropTypes.string,
+  label: PropTypes.string,
 };
 
 Input.defaultProps = {
-  bgColor: 'bg-gray-100',
+  bgColor: 'bg-gray-50',
   textSize: 'text-sm',
-  size: 'h-12 w-full',
+  size: 'h-[52px] w-full',
   type: 'text',
-  placeholder: '',
+  label: '',
 };
 
 export default Input;

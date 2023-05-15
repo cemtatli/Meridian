@@ -14,9 +14,8 @@ const HomeLayout = () => {
           end={true}
           className={({ isActive }) =>
             classNames({
-              '-mt-[2px] flex items-center gap-x-1.5 border-t-2 py-4 text-sm font-medium': true,
-              'border-transparent ': !isActive,
-              'border-primary-ocean font-bold text-primary-ocean': isActive,
+              '-mt-0.5 flex items-center gap-x-1.5  py-4 text-sm font-medium text-primary-text-2 dark:text-white': true,
+              'font-bold !text-primary-icon': isActive,
             })
           }
         >
@@ -27,9 +26,8 @@ const HomeLayout = () => {
           end={true}
           className={({ isActive }) =>
             classNames({
-              '-mt-[2px] flex items-center gap-x-1.5 border-t-2 py-4 text-sm font-medium ': true,
-              'border-transparent': !isActive,
-              'border-primary-ocean font-bold text-primary-ocean ': isActive,
+              '-mt-0.5 flex items-center gap-x-1.5 py-4 text-sm font-medium text-primary-text-2 dark:text-white': true,
+              'font-bold !text-primary-icon': isActive,
             })
           }
         >

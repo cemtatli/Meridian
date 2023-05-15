@@ -5,10 +5,9 @@ import ProfileNotFound from './components/profile-not-found';
 import { Helmet } from 'react-helmet';
 import ProfileHeader from './components/profile-header';
 import Loader from '~/components/loader';
-
 import { toast } from 'sonner';
 
-const Profile = () => {
+const ProfileLayout = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(false);
   const { username } = useParams();
@@ -16,11 +15,11 @@ const Profile = () => {
   useEffect(() => {
     setLoading(true);
     getUserInfo(username)
-      .then(user => {
+      .then((user) => {
         setUser(user);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setUser(false);
         setLoading(false);
         toast.error(err.code);
@@ -37,19 +36,19 @@ const Profile = () => {
 
   return (
     user && (
-      <div className="">
+      <div className="w-full">
         <Helmet>
           <title>
             {user.fullName} (@{user.username}) • Meridian
           </title>
         </Helmet>
         {<ProfileHeader user={user} />}
-        <div>
+        <>
           <Outlet />
-        </div>
+        </>
       </div>
     )
   );
 };
 
-export default Profile;
+export default ProfileLayout;

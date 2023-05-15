@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const TaBMenu = () => {
+const TabMenu = () => {
   const [activeTab, setActiveTab] = useState('tweets');
   return (
     <div className="mt-8 text-sm md:mt-12">
@@ -39,4 +39,4 @@ const TaBMenu = () => {
   );
 };
 
-export default TaBMenu;
+export default TabMenu;

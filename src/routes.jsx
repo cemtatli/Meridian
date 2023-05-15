@@ -3,10 +3,8 @@ import PrivateRoute from './components/private-route';
 import MainLayout from './layout/main-layout';
 import AuthLayout from './layout/auth-layout';
 
-import Home from './pages/home/home';
-import LogIn from './pages/auth/login/login';
-import Register from './pages/auth/register/register';
-import Profile from './pages/profile/profile';
+import LogIn from './pages/auth/login';
+import Register from './pages/auth/register';
 import Settings from './pages/settings';
 import Notifications from './pages/notifications';
 import Bookmarks from './pages/bookmarks';
@@ -14,7 +12,8 @@ import NotFound from './pages/not-found';
 import Messages from './pages/messages';
 import Following from './pages/home/components/following';
 import ForYou from './pages/home/components/for-you';
-import HomeLayout from './pages/home/home';
+import HomeLayout from './pages/home';
+import ProfileLayout from './pages/profile';
 
 const routes = [
   {
@@ -41,7 +40,7 @@ const routes = [
       },
       {
         path: ':username',
-        element: <Profile />,
+        element: <ProfileLayout />,
         auth: true,
       },
       {
@@ -86,8 +85,9 @@ const routes = [
   },
 ];
 
-const AuthenticationChecking = routes =>
-  routes.map(route => {
+// eslint-disable-next-line react-refresh/only-export-components
+const AuthenticationChecking = (routes) =>
+  routes.map((route) => {
     if (route?.auth) {
       route.element = <PrivateRoute>{route.element}</PrivateRoute>; // Eğer bir auth işlemi var ise bunu PrivateRoute ile sarmala.
     }
@@ -97,4 +97,5 @@ const AuthenticationChecking = routes =>
     return route; // Yok ise normal bir şekilde render et.
   });
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default AuthenticationChecking(routes);

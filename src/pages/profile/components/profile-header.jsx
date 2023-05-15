@@ -1,56 +1,26 @@
 import Avatar from '~/components/avatar';
-import TaBMenu from './tab-menu';
+import Banner from './banner';
 
+// eslint-disable-next-line react/prop-types
 const ProfileHeader = ({ user }) => {
   return (
-    <div className="px-4 py-5 sm:px-6 md:py-4 lg:px-8">
-      <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <div className="flex flex-col items-center justify-center gap-2 text-center md:mb-0 md:flex-row md:justify-between">
-          <Avatar src={user?.avatar} />
-          <div className="ml-4">
-            <h2 className="text-center text-lg font-bold text-gray-900 dark:text-white md:text-2xl">
-              {user?.fullName}
-            </h2>
-            <p className="text-center text-sm text-thunder-500 dark:text-gray-400 md:text-base">
-              @{user?.username}
-            </p>
+    <div className="h-screen-64 w-full overflow-auto">
+      <div className="flex h-full flex-col items-center">
+        <Banner />
+        <div className="flex h-fit w-full flex-col border-b border-thunder-100 px-4 py-5">
+          <div className="flex items-center justify-center gap-y-0.5 md:justify-start">
+            <Avatar ring={true} src={user?.avatar} />
           </div>
+          <h2 className="pt-2 text-center text-lg font-bold text-primary-dark dark:text-white md:text-start md:text-2xl">
+            {user?.fullName}
+          </h2>
+          <span className="text-center text-sm text-thunder-500 dark:text-thunder-600 md:text-start md:text-base">
+            @{user?.username}
+          </span>
+          <span className="text-center text-sm text-thunder-500 dark:text-thunder-600 md:text-start md:text-base">
+            {user?.bio}
+          </span>
         </div>
-        <div className="flex items-center md:mt-0">
-          <div className="mr-4">
-            <span className="text-sm font-semibold text-gray-900 dark:text-white md:text-base">
-              {user?.followers?.length}
-            </span>
-            <span className="text-xs text-thunder-500 dark:text-primary-light md:text-sm">
-              {' '}
-              followers
-            </span>
-          </div>
-          <div className="mr-4">
-            <span className="text-sm font-semibold text-gray-900 dark:text-white md:text-base">
-              {user?.following?.length}
-            </span>
-            <span className="text-xs text-thunder-500 dark:text-primary-light md:text-sm">
-              {' '}
-              following
-            </span>
-          </div>
-          <div>
-            <span className="text-sm font-semibold text-gray-900 dark:text-white md:text-base">
-              {user?.tweets?.length}
-            </span>
-            <span className="text-xs text-thunder-500 dark:text-primary-light md:text-sm">
-              {' '}
-              tweets
-            </span>
-          </div>
-        </div>
-        <div className="text-sm">
-          Joined&nbsp;<span className="font-semibold">{user?.joinDate}</span>
-        </div>
-      </div>
-      <div className="mt-8 md:mt-12">
-        <TaBMenu />
       </div>
     </div>
   );

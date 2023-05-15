@@ -10,7 +10,6 @@ import {
 import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 import { toast } from 'sonner';
 import { userHandle } from './utils';
-import { Navigate } from 'react-router-dom';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
@@ -25,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
-onAuthStateChanged(auth, async user => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
     const dbUser = await getDoc(doc(db, 'users', user.uid));
     let data = {
@@ -41,7 +40,7 @@ onAuthStateChanged(auth, async user => {
   }
 });
 
-export const getUserInfo = async uname => {
+export const getUserInfo = async (uname) => {
   const username = await getDoc(doc(db, 'usernames', uname));
 
   if (username.exists()) {

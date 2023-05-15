@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <>
-      <div className="absolute h-[100px] w-full bg-primary-ocean/40 md:h-72"></div>
+      <div className="absolute mx-auto max-w-screen-2xl bg-primary-text-2/40 md:h-72"></div>
     </>
   );
 };

@@ -5,10 +5,11 @@ export const RegisterSchema = Yup.object().shape({
     .required('Kullanıcı adı alanı zorunludur.')
     .test({
       message: 'Geçerli bir kullanıcı adı girin',
-      test: str => /^[a-z0-9\.\_]+$/i.test(str), // Kullanici adi icin dogrulama
+      // eslint-disable-next-line no-useless-escape
+      test: str => /^[a-z0-9\.\_]+$/i.test(str), // *** Username Validate Processes ***
     })
-    .min(3, 'Kullanıcı adı en az 3 karakter içermelidir.'),
+    .min(3),
   full_name: Yup.string().required(),
   email: Yup.string().required().email(),
-  password: Yup.string().required(),
+  password: Yup.string().min(6).required(),
 });
