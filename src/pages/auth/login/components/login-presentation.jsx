@@ -35,7 +35,7 @@ const LoginPresentation = () => {
             className="flex h-10 cursor-pointer items-center gap-x-4 rounded-xl bg-ocean-300 px-4 py-2 text-sm backdrop-opacity-80 transition-all duration-200 hover:bg-ocean-500"
             key={index}
           >
-            <item.icon className="flex-shrink-0" aria-hidden="true" height={24} width={24} />
+            <item.icon className="flex-shrink-0" aria-hidden="true" height={26} width={26} />
             <span className="font-medium">{item.desc}</span>
           </div>
         ))}

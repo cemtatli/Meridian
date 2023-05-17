@@ -60,14 +60,9 @@ export const login = async (email, password) => {
 };
 
 export const register = async ({ email, password, full_name, username }) => {
-  // Get the current date
   const currentDate = new Date();
-
-  // Get the month and year of the current date
-  const month = currentDate.toLocaleString('en-US', { month: 'long' }); // returns the full name of the current month (e.g. "May")
-  const year = currentDate.getFullYear(); // returns the current year (e.g. 2023)
-
-  // Format the join date string as "Month Year"
+  const month = currentDate.toLocaleString('en-US', { month: 'long' });
+  const year = currentDate.getFullYear();
   const joinDate = `${month} ${year}`;
 
   try {

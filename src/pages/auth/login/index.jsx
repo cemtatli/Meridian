@@ -6,6 +6,7 @@ import { Formik, Form } from 'formik';
 import { LoginSchema } from '~/validation/login-schema.js';
 import Logo from '~/components/logo.jsx';
 import LoginPresentation from './components/login-presentation';
+import { Helmet } from 'react-helmet';
 
 const LogIn = () => {
   const navigate = useNavigate();
@@ -19,41 +20,46 @@ const LogIn = () => {
   };
 
   return (
-    <div className="flex h-screen w-full ">
-      <LoginPresentation />
-      <section className="flex flex-1 flex-col items-center justify-center bg-white">
-        <nav className="flex w-4/5 flex-col gap-4 md:mt-[210px] lg:w-2/4">
-          <div className="flex items-center justify-center gap-x-2 text-center text-2xl font-bold tracking-tight text-primary-dark md:text-start">
-            <Logo size="w-6 h-6 flex-shrink-0" />
-            <span className="whitespace-nowrap">Welcome to Meridian</span>
-          </div>
-          <Formik
-            validationSchema={LoginSchema}
-            initialValues={{
-              email: '',
-              password: '',
-            }}
-            onSubmit={handleSubmit}
-          >
-            {({ isSubmitting, isValid, dirty }) => (
-              <Form className="flex flex-col gap-y-4">
-                <Input label={'Email or username'} type="email" name="email" />
-                <Input label={'Password'} name="password" type="password" />
-                <Button disabled={!isValid || !dirty || isSubmitting} textSize="text-base">
-                  Log in
-                </Button>
-              </Form>
-            )}
-          </Formik>
-          <div className="text-center text-sm font-medium text-primary-dark">
-            Don&apos;t have an account yet?
-            <Link to={'/auth/register'} className="ml-1 font-semibold hover:text-ocean-500  hover:underline">
-              Register
-            </Link>
-          </div>
-        </nav>
-      </section>
-    </div>
+    <>
+      <Helmet>
+        <title>Welcome to Meridian</title>
+      </Helmet>
+      <div className="flex h-screen w-full ">
+        <LoginPresentation />
+        <section className="flex flex-1 flex-col items-center justify-center bg-white">
+          <nav className="flex w-4/5 flex-col gap-4 md:mt-[210px] lg:w-2/4">
+            <div className="flex items-center justify-center gap-x-2 text-center text-2xl font-bold tracking-tight text-primary-dark md:text-start">
+              <Logo size="w-6 h-6 flex-shrink-0" />
+              <span className="whitespace-nowrap">Welcome to Meridian</span>
+            </div>
+            <Formik
+              validationSchema={LoginSchema}
+              initialValues={{
+                email: '',
+                password: '',
+              }}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting, isValid, dirty }) => (
+                <Form className="flex flex-col gap-y-4">
+                  <Input label={'Email or username'} type="email" name="email" />
+                  <Input label={'Password'} name="password" type="password" />
+                  <Button disabled={!isValid || !dirty || isSubmitting} textSize="text-base">
+                    Log in
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+            <div className="text-center text-sm font-medium text-primary-dark">
+              Don&apos;t have an account yet?
+              <Link to={'/auth/register'} className="ml-1 font-semibold hover:text-ocean-500  hover:underline">
+                Register
+              </Link>
+            </div>
+          </nav>
+        </section>
+      </div>
+    </>
   );
 };
 

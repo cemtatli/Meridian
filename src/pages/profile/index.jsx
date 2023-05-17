@@ -24,7 +24,7 @@ const ProfileLayout = () => {
         setLoading(false);
         toast.error(err.code);
       });
-  }, [username]);
+  }, []);
 
   if (loading) {
     return <Loader />;
