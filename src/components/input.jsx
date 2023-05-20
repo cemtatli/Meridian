@@ -40,10 +40,7 @@ const Input = ({ children, bgColor, textSize, size, type, label, ...props }) => 
         {children}
       </input>
       {isPasswordType && (
-        <span
-          className="absolute inset-y-0 right-0.5 flex cursor-pointer items-center px-2 text-primary-dark"
-          onClick={toggleShowPassword}
-        >
+        <span className="absolute inset-y-0 right-0.5 flex cursor-pointer items-center px-2 text-primary-dark" onClick={toggleShowPassword}>
           {showPassword ? <EyeAlt width={16} height={16} /> : <EyeOff width={16} height={16} />}
         </span>
       )}

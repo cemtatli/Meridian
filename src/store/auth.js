@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: 'null', // Kullanci var mi yok mu bilemediğimiz için başlangıç değeri olarak null veriyoruz.
+  user: 'null', // Başlangıç olarak kullanıcı değerini bilemediğimiz için null olarak veriyoruz.
 };
 
 const auth = createSlice({

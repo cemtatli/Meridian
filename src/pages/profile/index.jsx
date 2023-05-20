@@ -1,53 +1,41 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getUserInfo } from '~/firebase.js';
 import ProfileNotFound from './components/profile-not-found';
 import { Helmet } from 'react-helmet';
 import ProfileHeader from './components/profile-header';
 import Loader from '~/components/loader';
-import { toast } from 'sonner';
 
 const ProfileLayout = () => {
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   const { username } = useParams();
 
   useEffect(() => {
-    setLoading(true);
     getUserInfo(username)
       .then((user) => {
         setUser(user);
-        setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setUser(false);
-        setLoading(false);
-        toast.error(err.code);
       });
-  }, []);
+  }, [username]);
 
-  if (loading) {
-    return <Loader />;
-  }
-
+  console.log(user);
   if (user === false) {
     return <ProfileNotFound />;
   }
 
+  if (user === null) {
+    return <Loader />;
+  }
+
   return (
-    user && (
-      <div className="w-full">
-        <Helmet>
-          <title>
-            {user.fullName} (@{user.username}) • Meridian
-          </title>
-        </Helmet>
-        {<ProfileHeader user={user} />}
-        <>
-          <Outlet />
-        </>
-      </div>
-    )
+    <div className="w-full">
+      <Helmet>
+        <title>{/*  {user.fullName} (@{user.username}) • Meridian */}</title>
+      </Helmet>
+      <ProfileHeader user={user} />
+    </div>
   );
 };
 

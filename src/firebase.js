@@ -40,14 +40,13 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-export const getUserInfo = async (uname) => {
-  const username = await getDoc(doc(db, 'usernames', uname));
-
+export const getUserInfo = async (user_name) => {
+  const username = await getDoc(doc(db, 'usernames', user_name));
+  console.log(username);
   if (username.exists()) {
     return (await getDoc(doc(db, 'users', username.data().user_id))).data();
   } else {
-    /*  toast.error('Kullanıcı bulunamadı!'); */
-    throw new Error('Kullanıcı bulunamadı!');
+    toast.error('Kullanıcı bulunamadı!');
   }
 };
 
@@ -66,9 +65,9 @@ export const register = async ({ email, password, full_name, username }) => {
   const joinDate = `${month} ${year}`;
 
   try {
-    const user = await getDoc(doc(db, 'usernames', username));
-    if (user.exists()) {
-      toast.error(`${username} kullanıcı adı başkası tarafından kullanılıyor.`);
+    const usernameDoc = await getDoc(doc(db, 'usernames', username));
+    if (usernameDoc.exists()) {
+      toast.message(`${username} kullanıcı adı başkası tarafından kullanılıyor.`);
     } else {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       if (response.user) {
@@ -91,6 +90,7 @@ export const register = async ({ email, password, full_name, username }) => {
         await updateProfile(auth.currentUser, {
           displayName: full_name,
         });
+
         return response.user;
       }
     }

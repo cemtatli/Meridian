@@ -14,7 +14,7 @@ const App = () => {
   }
   return (
     <Provider>
-      <Toaster position="top-center" />
+      <Toaster richColors position="top-center" />
       {Routes}
     </Provider>
   );

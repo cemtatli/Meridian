@@ -55,7 +55,7 @@ export default {
         'screen-128': 'calc(100vh - 8rem)',
       },
       fontSize: {
-        xxs: ['10px', '1rem'],
+        xxs: ['10px', '0.85rem'],
       },
     },
   },
