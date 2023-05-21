@@ -42,7 +42,6 @@ onAuthStateChanged(auth, async (user) => {
 
 export const getUserInfo = async (user_name) => {
   const username = await getDoc(doc(db, 'usernames', user_name));
-  console.log(username);
   if (username.exists()) {
     return (await getDoc(doc(db, 'users', username.data().user_id))).data();
   } else {

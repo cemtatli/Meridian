@@ -1,6 +1,6 @@
 const ForYou = () => {
   return (
-    <div className="flex h-full  w-full items-center ">
+    <div className="flex h-full  w-full items-center px-4">
       <span className="text-sm font-medium">
         <div className="div">
           <div>Lorem ipsum dolor sit amet.</div>

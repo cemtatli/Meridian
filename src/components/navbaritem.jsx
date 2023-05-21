@@ -43,7 +43,7 @@ const NavbarItem = () => {
         <NavLink
           className={({ isActive }) =>
             classNames({
-              'flex h-14 items-center justify-between gap-x-2 border-t-2 border-transparent px-2 font-medium text-primary-text-2 dark:text-primary-light/80 xs:px-3 sm:px-4 md:border-b-2 md:border-t-0 md:border-opacity-0 md:px-6 lg:px-8': true,
+              'flex h-14 items-center justify-between gap-x-2 border-t-2 border-transparent px-2 font-medium text-thunder-900 dark:text-primary-light/80 xs:px-3 sm:px-4 md:border-b-2 md:border-t-0 md:border-opacity-0 md:px-6 lg:px-8': true,
               'border-t-2 !border-primary-icon transition-all duration-150 md:!border-b-2 md:!border-t-0': isActive,
             })
           }

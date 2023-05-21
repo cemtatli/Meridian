@@ -8,22 +8,6 @@ const Following = () => {
         <title>Meridian • Following</title>
       </Helmet>
       <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
     </div>
   );
 };
