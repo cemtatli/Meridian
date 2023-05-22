@@ -48,6 +48,14 @@ export const getUserInfo = async (user_name) => {
     toast.error('Kullanıcı bulunamadı!');
   }
 };
+export const getNotifications = async (user_notifications) => {
+  const notifications = await getDoc(doc(db, 'usernames', user_notifications));
+  if (notifications.exists()) {
+    return (await getDoc(doc(db, 'notifications', notifications.data().user_id))).data();
+  } else {
+    toast.error('Hiç bir bildirim yoktur !');
+  }
+};
 
 export const login = async (email, password) => {
   try {

@@ -6,11 +6,11 @@ import { NavLink, Outlet } from 'react-router-dom';
 const HomeLayout = () => {
   const { t } = useTranslation();
   return (
-    <div>
+    <>
       <Helmet>
         <title>Meridian</title>
       </Helmet>
-      <nav className="sticky top-0 flex w-full items-center justify-center gap-x-20 border-b border-ocean-950 border-opacity-10 bg-transparent px-4 backdrop-blur-xl dark:border-white dark:border-opacity-10 md:static md:gap-x-16 md:border-b-[0px] md:border-t md:border-transparent">
+      <nav className="sticky top-0 flex w-full items-center justify-center gap-x-20 border-b border-ocean-950 border-opacity-10 bg-transparent px-4 backdrop-blur-xl dark:border-white dark:border-opacity-10 md:static md:gap-x-16 md:border-b-0 md:border-t-0 md:border-transparent">
         <NavLink
           to={'/'}
           end={true}
@@ -36,10 +36,10 @@ const HomeLayout = () => {
           {t('Follow')}
         </NavLink>
       </nav>
-      <>
+      <div className="pt-2">
         <Outlet />
-      </>
-    </div>
+      </div>
+    </>
   );
 };
 

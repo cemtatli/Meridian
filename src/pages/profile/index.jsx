@@ -20,7 +20,6 @@ const ProfileLayout = () => {
       });
   }, [username]);
 
-  console.log(user);
   if (user === false) {
     return <ProfileNotFound />;
   }

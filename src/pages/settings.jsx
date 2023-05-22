@@ -10,11 +10,11 @@ const Settings = () => {
   return (
     <>
       <Helmet>
-        <title>Meridian • Settings</title>
+        <title>Meridian • {t('Settings.title')}</title>
       </Helmet>
       <section className="h-screen-64 w-full overflow-auto px-5">
         <article className="mx-auto max-w-2xl py-12">
-          <h3 className="mb-8 text-2xl font-bold text-primary-dark dark:text-gray-100">{t('Settings.title')}</h3>
+          <h3 className="text-pr mb-8 text-2xl font-bold dark:text-gray-100">{t('Settings.title')}</h3>
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between rounded-lg bg-white px-4 py-2.5 shadow-md dark:bg-gray-800">
               <label className="text-gray-800 dark:text-white">{t('ThemeChange')}</label>
