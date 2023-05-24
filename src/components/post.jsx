@@ -1,7 +1,10 @@
 import { Reply, Heart } from 'iconoir-react';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Post = () => {
+  const { username } = useParams();
+
   const [likeCount, setLikeCount] = useState(0);
   const [retweetCount, setRetweetCount] = useState(0);
   const [commentCount, setCommentCount] = useState(0);
@@ -20,13 +23,12 @@ const Post = () => {
 
   return (
     <div className="flex h-[200px] w-full items-center justify-center">
-      <div className="flex h-full w-full max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow md:max-w-screen-md">
+      <div className="flex h-full w-full max-w-sm flex-col rounded-lg border border-gray-200 shadow dark:border-opacity-10  md:max-w-screen-md">
         <div className="p-4">
           <div className="flex items-center">
-            <img className="h-10 w-10 rounded-full" src="https://placekitten.com/100/100" alt="Profil Fotoğrafı" />
+            <img className="h-10 w-10 rounded-full" src="./default-avatar.png" alt="Profil Fotoğrafı" />
             <div className="ml-3">
-              <span className="text-sm font-bold">Kullanıcı Adı</span>
-              <span className="text-sm text-gray-500">‧ Zaman</span>
+              <span className="text-sm font-bold">{username}</span>
             </div>
           </div>
           <div className="mt-4">
