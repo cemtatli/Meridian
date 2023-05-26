@@ -15,10 +15,10 @@ const Input = ({ children, bgColor, textSize, size, type, label, ...props }) => 
   const isPasswordType = type === 'password';
 
   return (
-    <label className="relative block rounded-xl">
+    <label className="relative block rounded-lg">
       <small
         className={classNames({
-          'pointer-events-none absolute left-4 -translate-y-1/2 cursor-text font-medium text-primary-text-2 transition-all': true,
+          'pointer-events-none absolute left-4 -translate-y-1/2 cursor-text font-medium text-thunder-500 transition-all': true,
           'top-1/2 text-xs': !field.value,
           'top-3 text-xxs font-medium': field.value,
         })}
@@ -32,7 +32,7 @@ const Input = ({ children, bgColor, textSize, size, type, label, ...props }) => 
         className={
           (` ${isPasswordType ? 'pr-8' : ''}  ${bgColor} ${textSize} ${size}`,
           classNames({
-            'h-[52px] w-full rounded-xl border-2 border-gray-300 bg-transparent px-4 py-2 text-primary-dark placeholder:text-sm focus:border-ocean-400 focus:placeholder-transparent focus:outline-none': true,
+            'h-12 w-full rounded-lg border-2 border-gray-300 bg-transparent px-4 py-2 text-sm text-primary-dark placeholder:text-sm focus:border-ocean-600 focus:border-opacity-80 focus:placeholder-transparent focus:outline-none': true,
             'pt-4': field.value,
           }))
         }

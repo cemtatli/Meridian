@@ -10,42 +10,32 @@ const LanguageChanger = () => {
     i18n.changeLanguage(newLanguage);
   };
 
-  return (
-    <div>
+  const renderLanguageButton = () => {
+    const isTurkish = i18n.language === 'tr';
+    const languageCode = isTurkish ? 'TR' : 'US';
+    const languageName = isTurkish ? 'Türkçe' : 'English';
+
+    return (
       <button
-        className="flex items-center gap-2 rounded-lg text-center transition-colors duration-200 ease-in-out focus:outline-none dark:text-white "
+        className="flex items-center gap-2 rounded-lg text-center transition-colors duration-200 ease-in-out focus:outline-none dark:text-white"
         onClick={toggleLanguage}
       >
-        {i18n.language === 'tr' ? (
-          <>
-            <ReactCountryFlag
-              countryCode="TR"
-              svg
-              style={{
-                width: '1.25rem',
-                height: '1.25rem',
-              }}
-              title="TR"
-            />
-            <span>Türkçe</span>
-          </>
-        ) : (
-          <>
-            <ReactCountryFlag
-              countryCode="US"
-              svg
-              style={{
-                width: '1.25rem',
-                height: '1.25rem',
-              }}
-              title="US"
-            />
-            <span>English</span>
-          </>
-        )}
+        <ReactCountryFlag
+          countryCode={languageCode}
+          svg
+          style={{
+            width: '16px',
+            height: '16px',
+          }}
+          title={languageCode}
+          aria-label={languageName}
+        />
+        <span className="text-sm">{languageName}</span>
       </button>
-    </div>
-  );
+    );
+  };
+
+  return <div>{renderLanguageButton()}</div>;
 };
 
 export default LanguageChanger;

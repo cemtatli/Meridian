@@ -24,7 +24,7 @@ const Register = () => {
   return (
     <>
       <Helmet>
-        <title>Let's get you set up on meridian.social</title>
+        <title>Lets get you set up on meridian.social</title>
       </Helmet>
       <section className="flex h-screen flex-col items-center justify-center bg-white md:relative">
         <nav className="flex w-4/5 flex-col gap-4 md:w-3/5 ">

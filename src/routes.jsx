@@ -6,7 +6,7 @@ import AuthLayout from './layout/auth-layout';
 import LogIn from './pages/auth/login';
 import Register from './pages/auth/register';
 import Settings from './pages/settings';
-import Notifications from './pages/notifications';
+
 import Bookmarks from './pages/bookmarks';
 import NotFound from './pages/not-found';
 import Messages from './pages/messages';
@@ -48,11 +48,7 @@ const routes = [
         element: <Settings />,
         auth: true,
       },
-      {
-        path: '/notifications',
-        element: <Notifications />,
-        auth: true,
-      },
+
       {
         path: '/bookmarks',
         element: <Bookmarks />,

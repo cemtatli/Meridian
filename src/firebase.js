@@ -97,7 +97,6 @@ export const register = async ({ email, password, full_name, username }) => {
         await updateProfile(auth.currentUser, {
           displayName: full_name,
         });
-
         return response.user;
       }
     }
