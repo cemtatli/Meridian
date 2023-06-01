@@ -24,6 +24,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 
+/* --------------------------------- */
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     const dbUser = await getDoc(doc(db, 'users', user.uid));
@@ -40,6 +41,7 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
+/* --------------------------------- */
 export const getUserInfo = async (user_name) => {
   const username = await getDoc(doc(db, 'usernames', user_name));
   if (username.exists()) {
@@ -48,6 +50,8 @@ export const getUserInfo = async (user_name) => {
     toast.error('Kullanıcı bulunamadı!');
   }
 };
+
+/* --------------------------------- */
 export const getNotifications = async (user_notifications) => {
   const notifications = await getDoc(doc(db, 'usernames', user_notifications));
   if (notifications.exists()) {
@@ -57,6 +61,7 @@ export const getNotifications = async (user_notifications) => {
   }
 };
 
+/* --------------------------------- */
 export const login = async (email, password) => {
   try {
     return await signInWithEmailAndPassword(auth, email, password);
@@ -65,6 +70,7 @@ export const login = async (email, password) => {
   }
 };
 
+/* --------------------------------- */
 export const register = async ({ email, password, full_name, username }) => {
   const currentDate = new Date();
   const month = currentDate.toLocaleString('en-US', { month: 'long' });
@@ -105,6 +111,7 @@ export const register = async ({ email, password, full_name, username }) => {
   }
 };
 
+/* --------------------------------- */
 export const logout = async () => {
   try {
     await signOut(auth);

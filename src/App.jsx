@@ -4,6 +4,7 @@ import Loader from './components/loader';
 import routes from './routes';
 import { Toaster } from 'sonner';
 import { Provider } from 'react-wrap-balancer';
+import { Analytics } from '@vercel/analytics/react';
 
 const App = () => {
   const user = useSelector((state) => state.auth.user);
@@ -14,7 +15,8 @@ const App = () => {
   }
   return (
     <Provider>
-      <Toaster richColors position="top-center" />
+      <Analytics />
+      <Toaster position="top-center" />
       {Routes}
     </Provider>
   );

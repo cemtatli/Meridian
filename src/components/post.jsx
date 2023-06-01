@@ -22,7 +22,7 @@ const Post = () => {
   };
 
   return (
-    <div className="flex h-[200px] w-full items-center justify-center">
+    <div className="flex w-full items-center justify-center">
       <div className="flex h-full w-full max-w-sm flex-col rounded-lg border border-gray-200 shadow dark:border-opacity-10  md:max-w-screen-md">
         <div className="p-4">
           <div className="flex items-center">

@@ -18,7 +18,7 @@ const Input = ({ children, bgColor, textSize, size, type, label, ...props }) => 
     <label className="relative block rounded-lg">
       <small
         className={classNames({
-          'pointer-events-none absolute left-4 -translate-y-1/2 cursor-text font-medium text-thunder-500 transition-all': true,
+          'pointer-events-none absolute left-4 -translate-y-1/2 cursor-text font-medium text-thunder-600 transition-all': true,
           'top-1/2 text-xs': !field.value,
           'top-3 text-xxs font-medium': field.value,
         })}

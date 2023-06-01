@@ -12,7 +12,7 @@ body {
 html,
 body,
 #root {
-  @apply h-screen text-primary-dark dark:bg-primary-dark dark:text-primary-light;
+  @apply text-primary-dark dark:bg-primary-dark dark:text-primary-light;
 }
 
 ::-webkit-scrollbar {
@@ -23,3 +23,7 @@ body,
   outline: 1px solid lightgreen;
 }
  */
+
+body {
+  @apply h-screen w-full;
+}

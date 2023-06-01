@@ -6,7 +6,7 @@ const Bookmarks = () => {
       <Helmet>
         <title>Meridian • Bookmarks</title>
       </Helmet>
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-screen w-full items-center justify-center">
         <span className="text-center text-sm font-medium">
           You don&apos;t have any bookmarked posts yet. When you bookmark one, it will show up here.
         </span>
