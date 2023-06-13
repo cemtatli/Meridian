@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Provider>
       <Analytics />
-      <Toaster position="top-center" />
+      <Toaster position="top-right" />
       {Routes}
     </Provider>
   );

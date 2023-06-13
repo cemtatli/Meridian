@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 const TabMenu = () => {
   const { t } = useTranslation();
   return (
-    <nav className="sticky top-0 flex w-full items-center justify-center gap-x-20 border-b border-ocean-950 border-opacity-10 bg-transparent px-4 backdrop-blur-xl dark:border-white dark:border-opacity-10 md:static md:gap-x-16 md:border-b-0 md:border-t-0 md:border-transparent">
+    <nav className="sticky top-0 mb-5 flex w-full items-center justify-center gap-x-20 border-b border-ocean-950 border-opacity-10 bg-transparent backdrop-blur-xl dark:border-white dark:border-opacity-10 md:static md:gap-x-16">
       <NavLink
         to={'/'}
         end={true}

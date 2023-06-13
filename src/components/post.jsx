@@ -1,4 +1,4 @@
-import { Reply, Heart } from 'iconoir-react';
+import { Reply, Heart, ChatBubble } from 'iconoir-react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -36,15 +36,15 @@ const Post = () => {
           </div>
           <div className="mt-16 flex justify-between">
             <div className="flex items-center text-sm text-red-500">
-              <Heart className="mr-1 h-4 w-4 cursor-pointer" onClick={handleLike} />
+              <Heart className="mr-1 h-5 w-5 cursor-pointer" onClick={handleLike} />
               <span>{likeCount}</span>
             </div>
             <div className="flex items-center text-sm text-blue-500">
-              <Reply className="mr-1 h-4 w-4 cursor-pointer" onClick={handleComment} />
+              <ChatBubble className="mr-1 h-5 w-5 cursor-pointer" onClick={handleComment} />
               <span>{commentCount}</span>
             </div>
             <div className="flex items-center text-sm text-green-500">
-              <Reply className="mr-1 h-4 w-4 cursor-pointer" onClick={handleRetweet} />
+              <Reply className="mr-1 h-5 w-5 cursor-pointer" onClick={handleRetweet} />
               <span>{retweetCount}</span>
             </div>
           </div>

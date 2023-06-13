@@ -32,7 +32,7 @@ const ProfileLayout = () => {
     <div className="w-full">
       <Helmet>
         <title>
-          {user?.fullName} (@{user?.username}) • Meridian
+          {user?.fullName} (@{user?.username}) • Scope
         </title>
       </Helmet>
       <ProfileHeader user={user} />

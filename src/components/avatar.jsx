@@ -26,7 +26,7 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  size: 'w-20 h-20 md:w-28 md:h-28 ',
+  size: 'w-20 h-20 md:w-28 md:h-28',
   ring: false,
 };
 

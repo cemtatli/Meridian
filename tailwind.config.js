@@ -7,7 +7,7 @@ export default {
       colors: {
         primary: {
           light: '#f9f9fb',
-          dark: '#0d1117',
+          dark: '#111827',
         },
         ocean: {
           50: '#eff6ff',
